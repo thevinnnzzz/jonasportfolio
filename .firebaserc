@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "firstproject-d9f73"
+  },
+  "targets": {
+    "firstproject-d9f73": {
+      "hosting": {
+        "jonascastillo": [
+          "jonascastillo"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

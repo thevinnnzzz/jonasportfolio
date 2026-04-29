@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "target": "jonascastillo",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -4,188 +4,615 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jonas Castillo | IT Support Engineer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
         :root {
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --accent: #38bdf8;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
+            --bg:        #0b1120;
+            --surface:   #111827;
+            --surface2:  #1a2540;
+            --border:    rgba(99,179,237,0.15);
+            --accent:    #63b3ed;
+            --accent2:   #48bb78;
+            --text:      #e2e8f0;
+            --muted:     #718096;
+            --tag-bg:    rgba(99,179,237,0.10);
         }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
+        /* ── Nav ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11,17,32,0.88);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
         }
-
-        /* Hero Section */
-        header {
-            text-align: center;
-            padding: 4rem 0;
-            border-bottom: 1px solid var(--card-bg);
-        }
-
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent); }
-        .subtitle { font-size: 1.2rem; color: var(--text-dim); }
-
-        /* Section Styling */
-        section { margin: 3rem 0; }
-        h2 { border-left: 4px solid var(--accent); padding-left: 1rem; margin-bottom: 1.5rem; }
-
-        /* Experience & Projects Cards */
-        .card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-3px); }
-
-        .tag {
-            background: rgba(56, 189, 248, 0.1);
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.05rem;
             color: var(--accent);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
+            letter-spacing: 0.04em;
         }
-
-        /* Certifications Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        th, td {
-            text-align: left;
-            padding: 1rem;
-            border-bottom: 1px solid var(--card-bg);
-        }
-        th { color: var(--accent); }
-
-        /* CTA & Buttons */
-        .cta-box {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid var(--accent);
-            padding: 2rem;
-            text-align: center;
-            border-radius: 12px;
-        }
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+        .nav-links { display: flex; gap: 1.6rem; }
+        .nav-links a {
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 1rem;
+            color: var(--muted);
+            font-size: 0.875rem;
+            letter-spacing: 0.03em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 50% 40%, rgba(99,179,237,0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 20% 80%, rgba(72,187,120,0.07) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-inner { position: relative; max-width: 680px; }
+        .hero-badge {
+            display: inline-block;
+            background: var(--tag-bg);
+            border: 1px solid rgba(99,179,237,0.35);
+            color: var(--accent);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.85rem;
+            border-radius: 50px;
+            margin-bottom: 1.4rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: 0.8rem;
+        }
+        .hero h1 span { color: var(--accent); }
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 480px;
+            margin: 0 auto 2.2rem;
+            line-height: 1.7;
+        }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--accent);
+            color: #0b1120;
+            padding: 0.72rem 1.6rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
+        .btn-outline {
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.72rem 1.6rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+        /* ── Stats strip ── */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+        .stat {
+            flex: 1;
+            max-width: 220px;
+            text-align: center;
+            padding: 1.6rem 1rem;
+            border-right: 1px solid var(--border);
+        }
+        .stat:last-child { border-right: none; }
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+        .stat-lbl { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; margin-top: 0.2rem; }
+
+        /* ── Sections ── */
+        .wrapper { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+        section { padding: 5rem 0; }
+        .section-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2.5rem;
         }
 
-        /* Contact Links */
-        .contact-links {
+        /* ── Timeline / Experience ── */
+        .timeline { position: relative; padding-left: 2rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            bottom: 6px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+        .tl-item {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1.25rem;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+        .tl-item:hover { border-color: rgba(99,179,237,0.45); transform: translateX(4px); }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -2.55rem;
+            top: 1.5rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 2px solid var(--bg);
+        }
+        .tl-role { font-size: 1.05rem; font-weight: 700; color: #fff; }
+        .tl-meta { font-size: 0.82rem; color: var(--accent); margin: 0.2rem 0 0.9rem; }
+        .tl-list { padding-left: 1.1rem; }
+        .tl-list li { font-size: 0.92rem; color: var(--muted); margin-bottom: 0.4rem; }
+        .tl-list li strong { color: var(--text); }
+
+        /* ── Skills grid ── */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+        .skill-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.2rem 1.4rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .skill-card:hover { border-color: rgba(99,179,237,0.4); transform: translateY(-3px); }
+        .skill-card-title {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+        .skill-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+        .pill {
+            background: var(--tag-bg);
+            color: var(--text);
+            font-size: 0.78rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+        }
+
+        /* ── Certs table ── */
+        .certs-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+        .certs-table thead th {
+            font-size: 0.73rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            padding: 0.6rem 1rem;
+            background: var(--surface2);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .certs-table thead th:first-child { border-left: 1px solid var(--border); border-radius: 8px 0 0 0; }
+        .certs-table thead th:last-child  { border-right: 1px solid var(--border); border-radius: 0 8px 0 0; }
+        .certs-table tbody td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        .certs-table tbody tr:last-child td { border-bottom: none; }
+        .certs-table tbody tr:first-child td:first-child { border-left: 1px solid var(--border); }
+        .certs-table tbody tr:first-child td:last-child  { border-right: 1px solid var(--border); }
+        .certs-table tbody tr:last-child td:first-child  { border-left: 1px solid var(--border); border-radius: 0 0 0 8px; }
+        .certs-table tbody tr:last-child td:last-child   { border-right: 1px solid var(--border); border-radius: 0 0 8px 0; }
+        .certs-table tbody tr { background: var(--surface); transition: background 0.2s; }
+        .certs-table tbody tr:hover { background: var(--surface2); }
+        .cert-badge {
+            display: inline-block;
+            background: rgba(72,187,120,0.12);
+            color: var(--accent2);
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            border: 1px solid rgba(72,187,120,0.25);
+            font-weight: 600;
+        }
+
+        /* ── Projects ── */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.25rem;
+        }
+        .proj-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            transition: border-color 0.25s, transform 0.25s;
+        }
+        .proj-card:hover { border-color: rgba(99,179,237,0.45); transform: translateY(-4px); }
+        .proj-icon {
+            width: 40px; height: 40px;
+            border-radius: 8px;
+            background: var(--tag-bg);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
+        .proj-title { font-size: 1rem; font-weight: 700; color: #fff; }
+        .proj-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+        .proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; }
+        .proj-tag {
+            background: var(--tag-bg);
+            color: var(--accent);
+            font-size: 0.73rem;
+            padding: 0.18rem 0.55rem;
+            border-radius: 4px;
+            border: 1px solid rgba(99,179,237,0.2);
+        }
+        .proj-highlight {
+            font-size: 0.8rem;
+            color: var(--accent2);
+            background: rgba(72,187,120,0.08);
+            border: 1px solid rgba(72,187,120,0.2);
+            border-radius: 6px;
+            padding: 0.45rem 0.75rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+
+        /* ── CTA / Contact ── */
+        .cta-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3.5rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(99,179,237,0.08), transparent 70%);
+            pointer-events: none;
+        }
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+        .cta-sub { color: var(--muted); max-width: 480px; margin: 0 auto 2rem; }
+        .contact-row {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-top: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
         }
-        .contact-links a { color: var(--text-dim); text-decoration: none; }
-        .contact-links a:hover { color: var(--accent); }
+        .contact-link {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+        .contact-link:hover { color: var(--accent); }
+        .contact-icon {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: var(--tag-bg);
+            border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.95rem;
+        }
 
+        /* ── Footer ── */
+        footer {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.78rem;
+            color: var(--muted);
+        }
+
+        /* ── Responsive ── */
         @media (max-width: 600px) {
-            .container { padding: 1rem; }
-            .contact-links { flex-direction: column; align-items: center; gap: 1rem; }
+            .nav-links { display: none; }
+            .stats { flex-wrap: wrap; }
+            .stat { flex: 1 1 50%; border-right: none; border-bottom: 1px solid var(--border); }
+            .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Jonas Castillo</h1>
-        <p class="subtitle">Junior IT Support Engineer | Problem Solver | System Optimizer</p>
-        <a href="mailto:jonas.castillo.it@email.com" class="btn">Hire Me</a>
-    </header>
+<!-- NAV -->
+<nav>
+    <span class="nav-logo">JC.</span>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#certs">Certs</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:jonas.castillo.it@email.com" class="btn-primary" style="font-size:0.82rem;padding:0.5rem 1.1rem;">Hire Me</a>
+</nav>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a detail-oriented <strong>IT Support Engineer</strong> with 1 year of hands-on experience in corporate environments. I specialize in making technology work for people, not against them. Whether it's managing AD groups or rebuilding a workstation, I focus on efficiency and clear communication.</p>
-    </section>
-
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="card">
-            <h3>Junior IT Support Engineer</h3>
-            <p style="color: var(--accent);">Company Name | 2024 - Present</p>
-            <ul>
-                <li>Resolved 40+ technical tickets weekly with 95% user satisfaction.</li>
-                <li>Provisioned 50+ Windows/macOS devices via MDM.</li>
-                <li>Documented 10+ SOPs for common VPN and network issues.</li>
-            </ul>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">Available for new opportunities</div>
+        <h1>Jonas <span>Castillo</span></h1>
+        <p class="hero-sub">Junior IT Support Engineer who makes technology work for people — from active directory to hardware, with clarity and speed.</p>
+        <div class="hero-cta">
+            <a href="mailto:jonas.castillo.it@email.com" class="btn-primary">Get in Touch</a>
+            <a href="#projects" class="btn-outline">View Projects</a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="certs">
-        <h2>Certifications</h2>
-        <table>
+<!-- STATS -->
+<div class="stats">
+    <div class="stat">
+        <span class="stat-num">40+</span>
+        <div class="stat-lbl">Tickets resolved weekly</div>
+    </div>
+    <div class="stat">
+        <span class="stat-num">95%</span>
+        <div class="stat-lbl">User satisfaction</div>
+    </div>
+    <div class="stat">
+        <span class="stat-num">50+</span>
+        <div class="stat-lbl">Devices provisioned</div>
+    </div>
+    <div class="stat">
+        <span class="stat-num">$12K</span>
+        <div class="stat-lbl">Savings secured</div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="wrapper">
+        <div class="section-label">Who I am</div>
+        <div class="section-title">About Me</div>
+        <p style="max-width:640px; color: var(--muted); font-size: 1.02rem; line-height: 1.85;">
+            I'm a detail-oriented <strong style="color:var(--text);">IT Support Engineer</strong> with 1 year of hands-on experience in corporate environments. I specialize in making technology work for people, not against them — whether that's managing AD groups, rebuilding workstations, or documenting SOPs that save the whole team hours. I focus on efficiency, clear communication, and sustainable solutions.
+        </p>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="padding-top: 0;">
+    <div class="wrapper">
+        <div class="section-label">Where I've worked</div>
+        <div class="section-title">Experience</div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-role">Junior IT Support Engineer</div>
+                <div class="tl-meta">Company Name &nbsp;·&nbsp; 2024 – Present &nbsp;·&nbsp; Full-time</div>
+                <ul class="tl-list">
+                    <li>Resolved <strong>40+ technical tickets</strong> weekly, maintaining a 95% user satisfaction rate across diverse hardware and software issues.</li>
+                    <li>Provisioned and enrolled <strong>50+ Windows &amp; macOS devices</strong> via MDM, reducing onboarding time by streamlining imaging workflows.</li>
+                    <li>Authored <strong>10+ SOPs</strong> covering VPN, network troubleshooting, and account lifecycle — cutting repeat escalations significantly.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="padding-top: 0;">
+    <div class="wrapper">
+        <div class="section-label">What I work with</div>
+        <div class="section-title">Skills</div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-card-title">OS & Platforms</div>
+                <div class="skill-pills">
+                    <span class="pill">Windows 10/11</span>
+                    <span class="pill">macOS</span>
+                    <span class="pill">Ubuntu Linux</span>
+                    <span class="pill">Windows Server</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-title">Networking</div>
+                <div class="skill-pills">
+                    <span class="pill">TCP/IP</span>
+                    <span class="pill">DNS / DHCP</span>
+                    <span class="pill">VPN</span>
+                    <span class="pill">LAN / WAN</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-title">Identity & MDM</div>
+                <div class="skill-pills">
+                    <span class="pill">Active Directory</span>
+                    <span class="pill">Group Policy</span>
+                    <span class="pill">Intune</span>
+                    <span class="pill">Jamf</span>
+                </div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-title">Tools</div>
+                <div class="skill-pills">
+                    <span class="pill">VMware</span>
+                    <span class="pill">Jira / ServiceNow</span>
+                    <span class="pill">Microsoft 365</span>
+                    <span class="pill">PowerShell</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs" style="padding-top: 0;">
+    <div class="wrapper">
+        <div class="section-label">Credentials</div>
+        <div class="section-title">Certifications</div>
+        <table class="certs-table">
             <thead>
                 <tr>
                     <th>Certification</th>
                     <th>Issuer</th>
                     <th>Year</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>CompTIA A+</td>
-                    <td>CompTIA</td>
-                    <td>2024</td>
+                    <td style="font-weight:600; color: var(--text);">CompTIA A+</td>
+                    <td style="color:var(--muted);">CompTIA</td>
+                    <td style="color:var(--muted);">2024</td>
+                    <td><span class="cert-badge">Active</span></td>
                 </tr>
                 <tr>
-                    <td>Google IT Support</td>
-                    <td>Google</td>
-                    <td>2024</td>
+                    <td style="font-weight:600; color: var(--text);">Google IT Support Professional</td>
+                    <td style="color:var(--muted);">Google / Coursera</td>
+                    <td style="color:var(--muted);">2024</td>
+                    <td><span class="cert-badge">Active</span></td>
                 </tr>
             </tbody>
         </table>
-    </section>
+    </div>
+</section>
 
-    <section id="projects">
-        <h2>Key Projects</h2>
-        <div class="card">
-            <h3>Home Lab Active Directory</h3>
-            <p>Built a virtual environment using VMware to simulate enterprise user management and GPO testing.</p>
-            <span class="tag">VMware</span> <span class="tag">Windows Server</span>
+<!-- PROJECTS -->
+<section id="projects" style="padding-top: 0;">
+    <div class="wrapper">
+        <div class="section-label">Things I've built</div>
+        <div class="section-title">Key Projects</div>
+        <div class="projects-grid">
+            <div class="proj-card">
+                <div class="proj-icon">🖥</div>
+                <div class="proj-title">Home Lab — Active Directory</div>
+                <p class="proj-desc">Built a virtual enterprise environment using VMware to simulate domain user management, GPO enforcement, and network segmentation — replicating real corporate IT scenarios.</p>
+                <div class="proj-highlight">
+                    <span>⚡</span> Hands-on GPO and OU structure testing
+                </div>
+                <div class="proj-tags">
+                    <span class="proj-tag">VMware</span>
+                    <span class="proj-tag">Windows Server</span>
+                    <span class="proj-tag">Active Directory</span>
+                    <span class="proj-tag">GPO</span>
+                </div>
+            </div>
+            <div class="proj-card">
+                <div class="proj-icon">🔧</div>
+                <div class="proj-title">Hardware Lifespan Extension</div>
+                <p class="proj-desc">Assessed, upgraded, and refurbished legacy hardware across 15+ employee workstations — replacing storage, memory, and thermal components to restore peak performance.</p>
+                <div class="proj-highlight">
+                    <span>💰</span> $12,000 saved in replacement costs
+                </div>
+                <div class="proj-tags">
+                    <span class="proj-tag">Hardware</span>
+                    <span class="proj-tag">Resource Mgmt</span>
+                    <span class="proj-tag">Cost Reduction</span>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <h3>Hardware Lifespan Extension</h3>
-            <p>Upgraded legacy hardware for 15+ devices, saving the department $12,000 in replacement costs.</p>
-            <span class="tag">Hardware</span> <span class="tag">Resource Mgmt</span>
-        </div>
-    </section>
+    </div>
+</section>
 
-    <section class="cta-box">
-        <h2>Need a Technical Hand?</h2>
-        <p>I'm currently looking for new challenges in the IT space.</p>
-        <div class="contact-links">
-            <a href="mailto:jonas.castillo.it@email.com">📧 Email Me</a>
-            <a href="#">🔗 LinkedIn</a>
-            <a href="#">💻 GitHub</a>
+<!-- CONTACT / CTA -->
+<section id="contact" style="padding-top: 0; padding-bottom: 5rem;">
+    <div class="wrapper">
+        <div class="cta-section">
+            <div class="section-label">Let's talk</div>
+            <div class="cta-title">Need a technical hand?</div>
+            <p class="cta-sub">I'm actively looking for new challenges in the IT space. Whether it's support, infrastructure, or a home-lab conversation — reach out.</p>
+            <a href="mailto:jonas.castillo.it@email.com" class="btn-primary">Send an Email</a>
+            <div class="contact-row">
+                <a href="mailto:jonas.castillo.it@email.com" class="contact-link">
+                    <div class="contact-icon">✉</div> jonas.castillo.it@email.com
+                </a>
+                <a href="#" class="contact-link">
+                    <div class="contact-icon">in</div> LinkedIn
+                </a>
+                <a href="#" class="contact-link">
+                    <div class="contact-icon">&lt;/&gt;</div> GitHub
+                </a>
+            </div>
         </div>
-    </section>
-</div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Jonas Castillo · Built with care</p>
+</footer>
 
 </body>
 </html>
