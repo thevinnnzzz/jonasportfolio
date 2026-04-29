@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonas Castillo | IT Support Engineer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.0/lucide.min.js"></script>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 1px solid var(--card-bg);
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--accent); }
+        .subtitle { font-size: 1.2rem; color: var(--text-dim); }
+
+        /* Section Styling */
+        section { margin: 3rem 0; }
+        h2 { border-left: 4px solid var(--accent); padding-left: 1rem; margin-bottom: 1.5rem; }
+
+        /* Experience & Projects Cards */
+        .card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-3px); }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Certifications Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid var(--card-bg);
+        }
+        th { color: var(--accent); }
+
+        /* CTA & Buttons */
+        .cta-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--accent);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 12px;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Contact Links */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .contact-links a { color: var(--text-dim); text-decoration: none; }
+        .contact-links a:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            .contact-links { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Jonas Castillo</h1>
+        <p class="subtitle">Junior IT Support Engineer | Problem Solver | System Optimizer</p>
+        <a href="mailto:jonas.castillo.it@email.com" class="btn">Hire Me</a>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I am a detail-oriented <strong>IT Support Engineer</strong> with 1 year of hands-on experience in corporate environments. I specialize in making technology work for people, not against them. Whether it's managing AD groups or rebuilding a workstation, I focus on efficiency and clear communication.</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>Junior IT Support Engineer</h3>
+            <p style="color: var(--accent);">Company Name | 2024 - Present</p>
+            <ul>
+                <li>Resolved 40+ technical tickets weekly with 95% user satisfaction.</li>
+                <li>Provisioned 50+ Windows/macOS devices via MDM.</li>
+                <li>Documented 10+ SOPs for common VPN and network issues.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="certs">
+        <h2>Certifications</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Certification</th>
+                    <th>Issuer</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CompTIA A+</td>
+                    <td>CompTIA</td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td>Google IT Support</td>
+                    <td>Google</td>
+                    <td>2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="projects">
+        <h2>Key Projects</h2>
+        <div class="card">
+            <h3>Home Lab Active Directory</h3>
+            <p>Built a virtual environment using VMware to simulate enterprise user management and GPO testing.</p>
+            <span class="tag">VMware</span> <span class="tag">Windows Server</span>
+        </div>
+        <div class="card">
+            <h3>Hardware Lifespan Extension</h3>
+            <p>Upgraded legacy hardware for 15+ devices, saving the department $12,000 in replacement costs.</p>
+            <span class="tag">Hardware</span> <span class="tag">Resource Mgmt</span>
+        </div>
+    </section>
+
+    <section class="cta-box">
+        <h2>Need a Technical Hand?</h2>
+        <p>I'm currently looking for new challenges in the IT space.</p>
+        <div class="contact-links">
+            <a href="mailto:jonas.castillo.it@email.com">📧 Email Me</a>
+            <a href="#">🔗 LinkedIn</a>
+            <a href="#">💻 GitHub</a>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
